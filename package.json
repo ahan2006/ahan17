@@ -8,7 +8,7 @@
     "url": "https://github.com/bchiang7/v4"
   },
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   },
   "keywords": [
     "gatsby"
