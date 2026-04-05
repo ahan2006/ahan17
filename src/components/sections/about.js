@@ -143,7 +143,7 @@ const About = () => {
           <div>
             <p>
               Hi, I'm Ahan. I spend most of my time figuring out how to make silicon do cool things.
-              I'm an third year ECE student at NC State, but my real focus has always been on
+              I'm a third year ECE student at NC State, but my real focus has always been on
               building actual products rather than just studying the theory behind them.
             </p>
 
