@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { srConfig, email } from '@config';
+import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
@@ -35,6 +35,21 @@ const StyledContactSection = styled.section`
     font-size: clamp(40px, 5vw, 60px);
   }
 
+  .contact-details {
+    margin-top: 40px;
+    font-family: var(--font-mono);
+    font-size: var(--fz-md);
+    color: var(--light-slate);
+
+    .highlight {
+      color: var(--green);
+    }
+
+    p {
+      margin: 10px 0;
+    }
+  }
+
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
     margin-top: 50px;
@@ -60,11 +75,20 @@ const Contact = () => {
       <h2 className="title">Get In Touch</h2>
 
       <p>
-        Although I’m not currently looking for any new opportunities, my inbox is always open.
-        Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+        My inbox is always open. Whether you have a question or just want to say hi, I’ll get back
+        to you!
       </p>
 
-      <a className="email-link" href={`mailto:${email}`}>
+      <div className="contact-details">
+        <p>
+          Email: <span className="highlight">ahanpshah@gmail.com</span>
+        </p>
+        <p>
+          Phone: <span className="highlight">(262)-402-0488</span>
+        </p>
+      </div>
+
+      <a className="email-link" href="mailto:ahanpshah@gmail.com">
         Say Hello
       </a>
     </StyledContactSection>

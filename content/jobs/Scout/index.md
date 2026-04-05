@@ -1,11 +1,12 @@
 ---
-date: '2017-04-01'
-title: 'Developer'
-company: 'Scout Studio'
-location: 'Northeastern University'
-range: 'Spring 2016 & 2017'
-url: 'https://web.northeastern.edu/scout/'
+date: '2024-06-01'
+title: 'Software Engineering Intern'
+company: 'ZHPServices'
+location: 'Durham, NC'
+range: 'June 2024 - August 2024'
+url: 'https://zhpservices.com/'
 ---
 
-- Collaborated with other student designers and engineers on pro-bono projects to create new brands, design systems, and websites for organizations in the community
-- Built and delivered technical solutions according to stakeholder business requirements
+- Built the e-commerce landing page for hurshy.com in Python/CSS, hosting 2,000+ users post-launch
+- Integrated Stripe through Python-based APIs to enable secure transactions supporting 10+ payment methods
+- Managed feature development through Git and centralized documentation using Confluence

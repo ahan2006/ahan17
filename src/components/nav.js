@@ -24,6 +24,12 @@ const StyledHeader = styled.header`
   backdrop-filter: blur(10px);
   transition: var(--transition);
 
+  /* Add smooth transitions to the internal elements we are going to shrink */
+  .logo,
+  .nav-links {
+    transition: var(--transition);
+  }
+
   @media (max-width: 1080px) {
     padding: 0 40px;
   }
@@ -33,22 +39,58 @@ const StyledHeader = styled.header`
 
   @media (prefers-reduced-motion: no-preference) {
     ${props =>
-    props.scrollDirection === 'up' &&
+    (props.scrollDirection === 'up' || props.isMouseNearTop) &&
       !props.scrolledToTop &&
       css`
-        height: var(--nav-scroll-height);
         transform: translateY(0px);
         background-color: rgba(10, 25, 47, 0.85);
         box-shadow: 0 10px 30px -10px var(--navy-shadow);
+
+        /* Desktop: Returns to normal height and content size */
+        @media (min-width: 769px) {
+          height: var(--nav-height);
+
+          .logo,
+          .nav-links {
+            transform: scale(1);
+          }
+        }
+
+        /* Mobile: Remains compact (original behavior) */
+        @media (max-width: 768px) {
+          height: var(--nav-scroll-height);
+        }
       `};
 
     ${props =>
     props.scrollDirection === 'down' &&
       !props.scrolledToTop &&
+      !props.isMouseNearTop &&
       css`
-        height: var(--nav-scroll-height);
-        transform: translateY(calc(var(--nav-scroll-height) * -1));
+        background-color: rgba(10, 25, 47, 0.85);
         box-shadow: 0 10px 30px -10px var(--navy-shadow);
+
+        /* Desktop: Shrinks height AND visually scales down content */
+        @media (min-width: 769px) {
+          height: 60px; /* Noticeably thinner header bar */
+          transform: translateY(0px);
+
+          .logo {
+            transform: scale(0.8); /* Shrinks logo by 20% */
+            transform-origin: left center;
+          }
+
+          .nav-links {
+            transform: scale(0.85); /* Shrinks links and button by 15% */
+            transform-origin: right center;
+          }
+        }
+
+        /* Mobile: Hides completely off-screen (original behavior) */
+        @media (max-width: 768px) {
+          height: var(--nav-scroll-height);
+          transform: translateY(calc(var(--nav-scroll-height) * -1));
+        }
       `};
   }
 `;
@@ -154,11 +196,24 @@ const Nav = ({ isHome }) => {
   const [isMounted, setIsMounted] = useState(!isHome);
   const scrollDirection = useScrollDirection('down');
   const [scrolledToTop, setScrolledToTop] = useState(true);
+  const [isMouseNearTop, setIsMouseNearTop] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const handleScroll = () => {
     setScrolledToTop(window.pageYOffset < 50);
   };
+
+  useEffect(() => {
+    const handleMouseMove = e => {
+      setIsMouseNearTop(e.clientY < 100);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -212,13 +267,16 @@ const Nav = ({ isHome }) => {
   );
 
   return (
-    <StyledHeader scrollDirection={scrollDirection} scrolledToTop={scrolledToTop}>
+    <StyledHeader
+      scrollDirection={scrollDirection}
+      scrolledToTop={scrolledToTop}
+      isMouseNearTop={isMouseNearTop}>
       <StyledNav>
         {prefersReducedMotion ? (
           <>
             {Logo}
 
-            <StyledLinks>
+            <StyledLinks className="nav-links">
               <ol>
                 {navLinks &&
                   navLinks.map(({ url, name }, i) => (
@@ -242,7 +300,7 @@ const Nav = ({ isHome }) => {
               )}
             </TransitionGroup>
 
-            <StyledLinks>
+            <StyledLinks className="nav-links">
               <ol>
                 <TransitionGroup component={null}>
                   {isMounted &&

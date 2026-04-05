@@ -1,12 +1,12 @@
 ---
-date: '2015-12-21'
-title: 'Creative Technologist Co-op'
-company: 'MullenLowe'
-location: 'Boston, MA'
-range: 'July - December 2015'
-url: 'https://us.mullenlowe.com/'
+date: '2023-06-01'
+title: 'Engineering Intern'
+company: 'Accenture'
+location: 'Durham, NC'
+range: 'June 2023 - July 2023'
+url: 'https://www.accenture.com/'
 ---
 
-- Developed, maintained, and shipped production code for client websites primarily using HTML, CSS, Sass, JavaScript, and jQuery
-- Performed quality assurance tests on various sites to ensure cross-browser compatibility and mobile responsiveness
-- Clients included JetBlue, Lovesac, U.S. Cellular, U.S. Department of Defense, and more
+- Developed an RL AWS DeepRacer model with object avoidance, achieving lap completion accuracy of 97%
+- Aligned IMU and camera data via timestamp interpolation, attaining 100% synchronization accuracy
+- Researched generative AI and NLP algorithms, focusing on token probability modeling and next word selection

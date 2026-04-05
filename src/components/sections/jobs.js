@@ -39,6 +39,13 @@ const StyledTabList = styled.div`
     padding-left: 50px;
     margin-left: -50px;
     margin-bottom: 30px;
+
+    /* Hide scrollbar for a clean swipe experience */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
   @media (max-width: 480px) {
     width: calc(100% + 50px);
@@ -86,7 +93,9 @@ const StyledTabButton = styled.button`
   }
   @media (max-width: 600px) {
     ${({ theme }) => theme.mixins.flexCenter};
-    min-width: 120px;
+    /* Force all mobile tabs to be 200px wide so long names fit and the math doesn't break */
+    flex: 0 0 200px;
+    width: 200px;
     padding: 0 15px;
     border-left: 0;
     border-bottom: 2px solid var(--lightest-navy);
@@ -116,10 +125,11 @@ const StyledHighlight = styled.div`
     top: auto;
     bottom: 0;
     width: 100%;
-    max-width: var(--tab-width);
+    /* Match the new 200px width from the buttons above */
+    max-width: 200px;
     height: 2px;
     margin-left: 50px;
-    transform: translateX(calc(${({ activeTabId }) => activeTabId} * var(--tab-width)));
+    transform: translateX(calc(${({ activeTabId }) => activeTabId} * 200px));
   }
   @media (max-width: 480px) {
     margin-left: 25px;
@@ -288,7 +298,7 @@ const Jobs = () => {
                       <span>{title}</span>
                       <span className="company">
                         &nbsp;@&nbsp;
-                        <a href={url} className="inline-link">
+                        <a href={url} className="inline-link" target="_blank" rel="noreferrer">
                           {company}
                         </a>
                       </span>

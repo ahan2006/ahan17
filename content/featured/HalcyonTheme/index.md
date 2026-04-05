@@ -1,15 +1,14 @@
 ---
-date: '1'
-title: 'Halcyon Theme'
+date: '2'
+title: 'Autonomous Embedded Car'
 cover: './halcyon.png'
-github: 'https://github.com/bchiang7/halcyon-site'
-external: 'https://halcyon-theme.netlify.com/'
 tech:
-  - VS Code
-  - Sublime Text
-  - Atom
-  - iTerm2
-  - Hyper
+  - Embedded Systems
+  - C
+  - Microcontrollers
+  - Interrupts
+  - Sensors
+  - PWM
 ---
 
-A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=brittanychiang.halcyon-vscode), [Package Control](https://packagecontrol.io/packages/Halcyon%20Theme), [Atom Package Manager](https://atom.io/themes/halcyon-syntax), and [npm](https://www.npmjs.com/package/hyper-halcyon-theme).
+A TI-MSP430-based embedded car programmed in C for line-following and Wi-Fi navigation. Integrated motor drivers, sensors, LCD, and implemented PWM, interrupts, and feedback loops for real-time control.

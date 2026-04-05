@@ -1,15 +1,13 @@
 ---
-date: '2'
-title: 'Spotify Profile'
+date: '1'
+title: 'Breadboard Computer '
 cover: './demo.png'
-github: 'https://github.com/bchiang7/spotify-profile'
-external: 'https://spotify-profile.herokuapp.com/'
+# external: ''
 tech:
-  - React
-  - Styled Components
-  - Express
-  - Spotify API
-  - Heroku
+  - Verilog
+  - Synopsys Design Vision
+  - MATLAB
+  - Oscilloscope / Digital Multimeter
 ---
 
-A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.
+An 8-bit breadboard computer constructed from 40+ logic ICs to ensure cycle-accurate operations. Integrated a custom ALU, decoder, and control units across 15+ debugged modules, and implemented Verilog designs synthesized via Synopsys Design Vision alongside MATLAB simulations for hardware-level validation and precise timing analysis.
