@@ -22,6 +22,10 @@ module.exports = {
       url: '/#projects',
     },
     {
+      name: 'Recommendations',
+      url: '/#recommendations', // This connects to the ID we made earlier!
+    },
+    {
       name: 'Contact',
       url: '/#contact',
     },
